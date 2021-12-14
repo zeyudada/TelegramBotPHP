@@ -26,11 +26,8 @@ class TelegramErrorLogger
                 $error .= '==========[Response]==========';
                 $error .= "\n";
                 foreach ($result as $key => $value) {
-                    if ($value == false) {
-                        $error .= $key.":\t\t\tFalse\n";
-                    } else {
-                        $error .= $key.":\t\t".$value."\n";
-                    }
+                    if ($value == false) $error .= $key.":\t\t\tFalse\n";
+                    else $error .= $key.":\t\t".$value."\n";
                 }
                 $array = '=========[Sent Data]==========';
                 $array .= "\n";
@@ -87,9 +84,8 @@ class TelegramErrorLogger
             $text .= "\n";
         }
         foreach ($array as $key => $value) {
-            if ($value instanceof CURLFile) {
-                $text .= $ref.'.'.$key.'= File'.PHP_EOL;
-            } elseif (is_array($value)) {
+            if ($value instanceof CURLFile) $text .= $ref.'.'.$key.'= File'.PHP_EOL;
+            elseif (is_array($value)) {
                 if ($title != null) {
                     $key = $title.'.'.$key;
                 }
